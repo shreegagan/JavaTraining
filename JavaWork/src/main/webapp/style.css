@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+.container{
+	margin : auto;
+	text-align: center;
+	width:400px;
+	height: 400px;
+	background-color: paleturquoise;
+	border: 2px solid red;
+	border-radius: 10px;
+}
+li{
+	list-style: none;
+}
