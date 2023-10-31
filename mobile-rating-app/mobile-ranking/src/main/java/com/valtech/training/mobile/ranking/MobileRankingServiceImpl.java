@@ -13,6 +13,7 @@ public class MobileRankingServiceImpl implements MobileRankingService {
 		List<String> patterns = pattCheckServ.listPatterns(mobile);
 		
 //		logic for rating..
+		
 		return 0;
 	}
 

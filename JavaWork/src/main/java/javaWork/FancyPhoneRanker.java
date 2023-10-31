@@ -69,6 +69,7 @@ public class FancyPhoneRanker {
         for (PhoneNumberScore nonFancyNumber : nonFancyNumbers) {
             rankedPhoneNumbers.add(nonFancyNumber.phoneNumber);
         }
+        
 
         return rankedPhoneNumbers;
     }

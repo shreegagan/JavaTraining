@@ -5,7 +5,9 @@ public class RatingHelper {
 	private MobileRankingServiceImpl mobileRankingService = new MobileRankingServiceImpl();
 	
 	public int getRanking(String mobile) {
-//Validation		
+//Validation	
+		
+		
 		return mobileRankingService.rankMobile(mobile);
 	}
 
