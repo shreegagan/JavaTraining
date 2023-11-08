@@ -1,26 +1,56 @@
 package com.valtech.training.hibernate;
 
-import java.time.LocalDate;
 
+import java.util.Date;
+
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 @Entity
 public class Employee {
 
-	@Id
+	// 1st preference
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	
+	// 2nd preference
+	
+//	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="xyz")
+//	SequenceGenerator(name="xyz",sequenceName="empseq")
+	// 3rd preference
+	
+//	@Id @GeneratedValue(strategy=GenerationType.TABLE,generator="abc")
+//	@Id @GeneratedValue(name="abc",table="pktable",pkColumnName="PKcol",pkColumnValue="empseq"valueCoulmnName="seed")
+	
 	private int id;
 	private String name;
-	private LocalDate dob;
+	@Basic() @Temporal(TemporalType.DATE)
+	private Date dob;
 	private float salary;
 	private char gender;
 	private boolean active;
+	
+	@Version
+	private int version;
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	public Employee() {
 
 	}
 
-	public Employee(int id, String name, LocalDate dob, float salary, char gender, boolean active) {
+	public Employee(int id, String name, Date dob, float salary, char gender, boolean active) {
 		
 		this.id = id;
 		this.name = name;
@@ -30,7 +60,7 @@ public class Employee {
 		this.active = active;
 	}
 
-	public Employee(String name, LocalDate dob, float salary, char gender, boolean active) {
+	public Employee(String name, Date dob, float salary, char gender, boolean active) {
 		
 		this.name = name;
 		this.dob = dob;
@@ -55,11 +85,11 @@ public class Employee {
 		this.name = name;
 	}
 
-	public LocalDate getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
-	public void setDob(LocalDate dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
