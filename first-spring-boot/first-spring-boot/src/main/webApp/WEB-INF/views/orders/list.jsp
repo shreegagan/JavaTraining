@@ -25,16 +25,17 @@
 		</tr>
 		<%
 		for (OrderModel o : orders) {
+			request.setAttribute("o",o);
 		%>
 
 		<tr>
-			<td><%=o.getId()%></td>
-			<td><%=o.getItem()%></td>
-			<td><%=o.getItemcount()%></td>
-			<td><%=o.getDescription()%></td>
-			<td><%=o.getOrderDate()%></td>
-			<td><a href="delete?id=<%=o.getId()%>">Delete</a> <a
-				href="edit?id=<%=o.getId()%>">Edit</a></td>
+			<td>${o.id }</td>
+			<td>${o.item }</td>
+			<td>${o.itemcount }</td>
+			<td>${o.description}</td>
+			<td>${o.orderDate}</td>
+			<td><a href="delete?id=${o.id }">Delete</a> <a
+				href="edit?id=${o.id }">Edit</a></td>
 
 
 		</tr>

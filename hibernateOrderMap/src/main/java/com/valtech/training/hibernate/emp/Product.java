@@ -1,5 +1,7 @@
 package com.valtech.training.hibernate.emp;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Product {
@@ -15,11 +18,22 @@ public class Product {
 	private int proId;
 	private String proName;
 	private double proAmount;
-	private int compId;
+
 	@ManyToOne(targetEntity = Company.class, cascade = { CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH }, fetch = FetchType.EAGER)
-	@JoinColumn(name = "compId", referencedColumnName = "compid")
+	@JoinColumn(name = "compId", referencedColumnName = "compId")
 	private Company company;
+	
+	@OneToMany(targetEntity = OrderItems.class,cascade= {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY,
+			mappedBy="products")
+	private Set<OrderItems> orderItems;
+	
+	public void setOrderItems(Set<OrderItems> orderItems) {
+		this.orderItems = orderItems;
+	}public Set<OrderItems> getOrderItems() {
+		return orderItems;
+	}
+	
 
 
 	public Product() {
@@ -28,11 +42,17 @@ public class Product {
 	
 
 
-	public Product( String proName, double proAmount, int compId) {
+	
+	public Product(String proName, double proAmount, Company company) {
+		super();
 		this.proName = proName;
 		this.proAmount = proAmount;
-		this.compId = compId;
+		this.company = company;
 	}
+
+
+
+
 	public void setCompany(Company company) {
 		this.company = company;
 	}public Company getCompany() {
@@ -71,15 +91,5 @@ public class Product {
 	}
 
 
-	public int getCompId() {
-		return compId;
-	}
-
-
-	public void setCompId(int compId) {
-		this.compId = compId;
-	}
-	
-	
 
 }
