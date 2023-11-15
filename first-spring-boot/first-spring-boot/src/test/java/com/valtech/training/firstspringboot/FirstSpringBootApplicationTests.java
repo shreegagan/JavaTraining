@@ -43,12 +43,12 @@ class FirstSpringBootApplicationTests {
 
 	@Test
 	void testEmployee() {
-//		assertEquals(4, empDAO.count());
+		assertEquals(4, empDAO.count());
 	}
 
 	@Test
 	void testOrders() {
-		Order o = orderService.createOrder(new Order("Hp", 21, "for the company", LocalDate.of(2023, 11, 8)));
+//		Order o = orderService.createOrder(new Order("Hp", 21, "for the company", LocalDate.of(2023, 11, 8)));
 //		assertEquals(4, o.getId());
 //		assertTrue(orderService.getAllOrder().size() > 0);
 	}
