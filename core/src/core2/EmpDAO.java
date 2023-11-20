@@ -5,22 +5,22 @@ import java.util.List;
 
 public interface EmpDAO {
 	
-	public long count() ;
+	public void count() throws SQLException ;
 	//
-	public void getListOfEmployeeinEachDepartment() ;
+	public void getListOfEmployeeinEachDepartment()throws SQLException ;
 	//
-	List<Employee> getEmployeeByDeptName(String name) ;
+	List<Employee> getEmployeeByDeptName(String name)throws SQLException ;
 	
-	List<Employee> getEmployeesSalaryGT(double amount ) ;
+	List<Employee> getEmployeesSalaryGT(double amount ) throws SQLException;
 	
-	List<Employee> getEmployeesSalaryLT(double amount) ;
+	List<Employee> getEmployeesSalaryLT(double amount) throws SQLException ;
 
 	
-	List<Employee> getEmployeeSeniority(int seniority) ;
+	List<Employee> getEmployeeSeniority(int seniority) throws SQLException ;
 
-	List<Employee> getEmployeeAgeBetween() ;
+	List<Employee> getEmployeeAgeBetween() throws SQLException;
 	
-	List<Employee> getEmployeeLocation(String location) ;
+	List<Employee> getEmployeeLocation(String location) throws SQLException;
 	
 
 	

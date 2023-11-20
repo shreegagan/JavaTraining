@@ -25,6 +25,13 @@ public class Product {
 	public Product() {
 	}
 
+	
+	public Product(String proName, double proAmount) {
+		this.proName = proName;
+		this.proAmount = proAmount;
+	}
+
+
 	public Product(int proId, String proName, double proAmount, int compId) {
 		this.proId = proId;
 		this.proName = proName;

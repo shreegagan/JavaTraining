@@ -13,6 +13,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
+import com.valtech.training.assignmentspringboot.components.OrderItmesDAOImpl.OrderItemsRowMapper;
+
 
 @Component
 public class AddressDAOImpl implements AddressDAO {
@@ -57,10 +59,10 @@ public class AddressDAOImpl implements AddressDAO {
 	}
 
 	@Override
-	public Address getAddress(int id) {
+	public List<Address>getAddress (int id) {
 
-		String selectQry = "SELECT ID,STREET,CITY,ZIPCODE FROM ADDRESS WHERE ID =?";
-		return new JdbcTemplate(dataSource).queryForObject(selectQry, new AddressRowMapper());
+		String selectQry = "SELECT ID,STREET,CITY,ZIPCODE FROM ADDRESS WHERE ID = ?";
+		return (List<Address>) new JdbcTemplate(dataSource).query(selectQry, new  AddressRowMapper(),id);
 	}
 	public class AddressRowMapper implements RowMapper<Address> {
 

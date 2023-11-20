@@ -16,10 +16,14 @@ public interface AddressDAO {
 
 	List<Address> getAllAddress();
 
-	Address getAddress(int id);
+	
 
 	void updateAddress(Address addr);
 
 	void updateAddress(Address addr, int id);
+
+	List<Address> getAddress(int id);
+
+	
 
 }

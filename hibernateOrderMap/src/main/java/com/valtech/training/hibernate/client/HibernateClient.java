@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Random;
+
+import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,9 +16,11 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import com.valtech.training.hibernate.emp.Address;
 import com.valtech.training.hibernate.emp.Company;
 import com.valtech.training.hibernate.emp.Customer;
+import com.valtech.training.hibernate.emp.Employee;
 import com.valtech.training.hibernate.emp.Order;
 import com.valtech.training.hibernate.emp.OrderItems;
 import com.valtech.training.hibernate.emp.Product;
+
 
 
 public class HibernateClient  {
@@ -30,39 +35,63 @@ public class HibernateClient  {
 		cfg.addAnnotatedClass(Order.class);
 //		cfg.addAnnotatedClass(OrderSummaryId.class);
 		cfg.addAnnotatedClass(OrderItems.class);
+		cfg.addAnnotatedClass(Employee.class);
 		
 		
 		SessionFactory sesFac=cfg.buildSessionFactory();
 		Session ses=sesFac.openSession();
 		Transaction tx=ses.beginTransaction();
 		
-		Address addr1=new Address("JP nagar","Banglore",560070);
-		ses.persist(addr1);
-		Company comp1=new Company("valtech",addr1);
-		ses.persist(comp1);
-		addr1.setCompany(comp1);
-		ses.save(addr1);
 		
-		Address addr2=new Address("BEL","Banglore",560070);
-		ses.persist(addr2);
-		Customer cus1=new Customer("Kruthik",1243143105,addr2);
-		ses.persist(cus1);
-		addr2.setCustomer(cus1);
-		ses.save(addr2);
+		 org.hibernate.Query q= ses.createQuery(" FROM EMPLOYEE WHERE ID=10");
+		 
+		 Employee e= (Employee)((org.hibernate.Query) q).uniqueResult();
+		 
+		 System.out.println(e);
+//		Random r= new Random();
+//		for (int i = 0; i <=30; i++) {
+//			
+//		Employee e = new Employee();
+//		e.setId(i);
+//		e.setName("Name" +i);
+//		e.setAge(r.nextInt(50));
+//		ses.save(e);
+//		
+//		}
+		
 	
 		
-		Product pro1=new Product("Phone",22000.00,comp1);
-		ses.persist(pro1);
 		
-		Order order1= new Order(df.parse("01-01-2023"),cus1);
-		ses.persist(order1);
+//		Address addr1=new Address("JP nagar","Banglore",560070);
+//		ses.persist(addr1);
+//		Company comp1=new Company("valtech",addr1);
+//		ses.persist(comp1);
+//		addr1.setCompany(comp1);
+//		ses.save(addr1);
+//		
+//		Address addr2=new Address("BEL","Banglore",560070);
+//		ses.persist(addr2);
+//		Customer cus1=new Customer("Kruthik",1243143105,addr2);
+//		ses.persist(cus1);
+//		addr2.setCustomer(cus1);
+//		ses.save(addr2);
+//	
+//		
+//		Product pro1=new Product("Phone",22000.00,comp1);
+//		ses.persist(pro1);
+//		
+//		Order order1= new Order(df.parse("01-01-2023"),cus1);
+//		ses.persist(order1);
+////		
+////		OrderSummaryId orderSummaryId= new OrderSummaryId(pro1,order1);
+////		ses.persist(orderSummaryId);
+//				
+//		OrderItems orderItems1=new OrderItems(pro1,order1,4);
+//		ses.persist(orderItems1);
+//		
 		
-//		OrderSummaryId orderSummaryId= new OrderSummaryId(pro1,order1);
-//		ses.persist(orderSummaryId);
-				
-		OrderItems orderItems1=new OrderItems(pro1,order1,4);
-		ses.persist(orderItems1);
-		
+//		
+//		
 //		OrderItems orderItems1=new OrderItems(orderSummaryId,4);
 //		ses.persist(orderItems1);
 		

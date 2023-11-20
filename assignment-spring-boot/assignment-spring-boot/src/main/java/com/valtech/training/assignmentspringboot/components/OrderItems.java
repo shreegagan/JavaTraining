@@ -27,6 +27,17 @@ public class OrderItems {
 	}
 
 
+	public OrderItems(int proQuantity) {
+		this.proQuantity = proQuantity;
+	}
+
+
+	@Override
+	public String toString() {
+		return "OrderItems [orderId=" + orderId + ", proId=" + proId + ", proQuantity=" + proQuantity + "]";
+	}
+
+
 	public OrderItems(int orderId, int proId, int proQuantity) {
 		this.orderId = orderId;
 		this.proId = proId;

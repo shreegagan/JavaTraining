@@ -24,9 +24,15 @@ public class Company {
 	
 	
 	public Company() {
+		
 	}
 	
 	
+	public Company(String compName) {
+		this.compName = compName;
+	}
+
+
 	public Company(String compName, int addrId) {
 		this.compName = compName;
 		this.addrId = addrId;

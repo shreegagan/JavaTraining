@@ -25,6 +25,15 @@ public class Customer {
 	
 	public Customer() {
 	}
+	
+	
+
+	public Customer(String name, int phone) {
+		this.name = name;
+		this.phone = phone;
+	}
+
+
 
 	public Customer(int cusId, String name, int phone, int addrId) {
 		this.cusId = cusId;

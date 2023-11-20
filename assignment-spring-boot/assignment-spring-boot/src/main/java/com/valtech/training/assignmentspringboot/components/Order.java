@@ -36,6 +36,12 @@ public class Order {
 
 	
 
+	public Order(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+
+
+
 	public Order(int cusId, Date orderDate) {
 		this.cusId = cusId;
 		this.orderDate = orderDate;
