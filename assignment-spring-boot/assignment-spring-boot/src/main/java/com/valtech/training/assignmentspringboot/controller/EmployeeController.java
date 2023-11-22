@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.valtech.training.assignmentspringboot.entity.Department;
+import com.valtech.training.assignmentspringboot.entity.Employee;
 import com.valtech.training.assignmentspringboot.models.DepartmentModels;
 import com.valtech.training.assignmentspringboot.models.EmployeeModels;
+import com.valtech.training.assignmentspringboot.repository.EmployeeRepo;
 import com.valtech.training.assignmentspringboot.service.EmployeeService;
  
  
@@ -23,6 +26,7 @@ import com.valtech.training.assignmentspringboot.service.EmployeeService;
 @RequestMapping(path = "/employees")
 public class EmployeeController {
  
+	
 	@Autowired
 	private EmployeeService employeeService;
  
@@ -87,6 +91,7 @@ public class EmployeeController {
 		return "employees/list";
 	}
 	@GetMapping("/list")
+	
 	public String listEmployee(Model model) {
  
 		departments = employeeService.getAllDepartments();
